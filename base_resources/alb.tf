@@ -27,14 +27,6 @@ resource "aws_security_group" "alb" {
   description = "Security group atachado al application load balancer."
   vpc_id      = data.aws_vpc.default.id
 
-  ingress {
-    description = "Allow all ingress for HTTPS"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     from_port   = 0
     to_port     = 0

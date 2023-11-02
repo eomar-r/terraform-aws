@@ -52,7 +52,7 @@ resource "aws_ecs_task_definition" "app_backend" {
 }
 
 resource "aws_lb_target_group" "app_backend" {
-  name        = "ecs-${local.app_name}"
+  name        = "ecs-${local.env}-${local.app_name}"
   port        = var.port_back
   protocol    = "HTTP"
   target_type = "ip"
@@ -74,8 +74,8 @@ resource "aws_lb_target_group" "app_backend" {
 # Security group rule
 resource "aws_security_group_rule" "sg_rule" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = var.port_back
+  to_port           = var.port_back
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = local.sg_alb_id
@@ -100,7 +100,7 @@ resource "aws_lb_listener" "app_backend" {
 }
 
 resource "aws_iam_role" "ecs_task_back" {
-  name = "ecs-${local.app_name}"
+  name = "ecs-${local.env}-${local.app_name}"
   assume_role_policy = jsonencode(
     {
       "Version" : "2008-10-17",

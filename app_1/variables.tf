@@ -5,3 +5,4 @@ variable "cpu_back" {}
 variable "memory_back" {}
 variable "port_back" {}
 variable "bucket_name" {}
+variable "region" {}

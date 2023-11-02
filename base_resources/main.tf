@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = var.region
   default_tags {
     tags = {
       env         = terraform.workspace
@@ -23,7 +23,7 @@ provider "aws" {
 locals {
   app_name = "base resources"
   env      = terraform.workspace
-  region   = "us-east-2"
+  region   = var.region
 
   only_in_dev_map = {
     dev  = 1

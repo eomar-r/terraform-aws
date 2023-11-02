@@ -20,7 +20,7 @@ provider "aws" {
 }
 
 locals {
-  region   = "us-east-2"
+  region   = var.region
   env      = terraform.workspace
   app_name = "app-1"
 
