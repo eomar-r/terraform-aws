@@ -12,12 +12,14 @@ variable "security_groups_ids" {
   type        = list(any)
   description = "The SGs to use"
 }
-variable "private_subnets_ids" {
+variable "public_subnets_ids" {
   type        = list(any)
-  description = "The private subnets to use"
+  description = "The public subnets to use"
 }
 variable "aws_alb_target_group_arn" {}
 variable "container_name" {}
 variable "container_port" {}
 variable "vpc_id" {}
 variable "tags" {}
+variable "enable_execute_command" {}
+variable "assign_public_ip" {}

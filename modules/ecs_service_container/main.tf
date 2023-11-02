@@ -7,12 +7,12 @@ resource "aws_ecs_service" "service" {
   task_definition = "${data.aws_ecs_task_definition.default.family}:${data.aws_ecs_task_definition.default.revision}"
   desired_count   = var.disered_count
   launch_type     = "FARGATE"
-  #   enable_execute_command = terraform.workspace == "dev" ? true : false
+  enable_execute_command = var.enable_execute_command
 
   network_configuration {
     security_groups  = var.security_groups_ids
-    subnets          = var.private_subnets_ids
-    assign_public_ip = false # Ya que se deployan en una subred privada
+    subnets          = var.public_subnets_ids
+    assign_public_ip = var.assign_public_ip
   }
 
   load_balancer {

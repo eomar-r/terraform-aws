@@ -1,3 +1,1 @@
-variable "public_subnets" {
-  description = "Subredes públicas."
-}
+variable "vpc_id" {}

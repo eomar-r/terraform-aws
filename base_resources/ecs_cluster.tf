@@ -27,7 +27,7 @@ module "ecs" {
 resource "aws_security_group" "containers" {
   name        = "${local.env}-containers"
   description = "Security group atachado a los contenedores."
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = data.aws_vpc.default.id
 
   ingress {
     description     = "Permite todo desde el alb."
