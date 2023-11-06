@@ -11,6 +11,8 @@ terraform {
 
 provider "aws" {
   region = var.region
+  # Mejores practicas de config: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
   default_tags {
     tags = {
       env         = terraform.workspace
@@ -30,4 +32,5 @@ locals {
     qa   = 0
     prod = 0
   }
+  # only_in_dev = local.only_in_dev_map[terraform.workspace]
 }
